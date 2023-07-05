@@ -19,7 +19,7 @@ An example `.pre-commit-config.yaml`:
 ---
 repos:
   - repo: https://github.com/frerksaxen/pre-commit-gitlabci-lint
-    rev: 1.0
+    rev: 1.0.0
     hooks:
       - id: gitlabci-lint
       # args: ["https://custom.gitlab.host.com/api/v4/projects/:id/ci/lint"] # for gitlab version > 15.7
