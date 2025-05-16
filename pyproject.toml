@@ -3,7 +3,39 @@
   bump_message = "bump: release $current_version \u2192 $new_version [skip-ci]"
   name = "cz_conventional_commits"
   tag_format = "$version"
-  version = "1.0.0"
+  version = "1.1.0"
   version_files = [
-    "setup.py:version",
+    "src/gitlabci_lint/__init__.py:__version__",
+    "pyproject.toml:version"
   ]
+
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.dynamic]
+version = {attr = "gitlabci_lint.__version__"}
+
+[project]
+dynamic = ["version"]
+name = "gitlabci-lint"
+authors = [
+  { name="Niko Eckerskorn" },
+  { name="Maciej Urbański", email="rooter@kyberian.net" },
+  { name="Frerk Saxen" },
+]
+description = "A pre-commit hook that validates your gitlab-ci.yml file."
+dependencies = [
+  "GitPython ~= 3.1",
+]
+requires-python = ">= 3.8"
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+readme = {file = "README.md", content-type = "text/markdown"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[project.scripts]
+gitlabci-lint = "gitlabci_lint.entry:main"

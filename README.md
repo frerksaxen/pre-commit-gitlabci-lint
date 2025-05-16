@@ -24,7 +24,14 @@ repos:
     rev: 1.0.0
     hooks:
       - id: gitlabci-lint
-      # args: ["https://custom.gitlab.host.com/api/v4/projects/:id"] # for gitlab version > 15.7
-      # args: ["https://custom.gitlab.host.com/api/v4"] # for gitlab version < 15.7
-      # args: [--token, 'Your_Gitlab_Access_Token_Value']
+        args:
+        # for gitlab version > 15.7
+        - "https://custom.gitlab.host.com/api/v4/projects/:id"
+        # or for gitlab version < 15.7
+        # "https://custom.gitlab.host.com/api/v4"
+        # It is recommended to store the Access token in the GITLAB_TOKEN environment variable, but you can also set it via
+        - "--token"
+        - "Your_Gitlab_Access_Token_Value"
+        # Enable dry_run to run pipeline creation simulation. See (https://docs.gitlab.com/api/lint/#validate-sample-cicd-configuration)
+        - "--dry_run"
 ```
