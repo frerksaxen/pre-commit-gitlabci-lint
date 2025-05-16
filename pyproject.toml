@@ -3,7 +3,7 @@
   bump_message = "bump: release $current_version \u2192 $new_version [skip-ci]"
   name = "cz_conventional_commits"
   tag_format = "$version"
-  version = "1.2.0"
+  version = "1.2.1"
   version_files = [
     "src/gitlabci_lint/__init__.py:__version__",
     "pyproject.toml:version"
