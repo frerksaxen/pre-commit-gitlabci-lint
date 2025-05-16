@@ -45,7 +45,6 @@ def add_dry_run(args):
 
 
 def main(argv=None):
-    # def main(argv=['-h']):
     token_env_key = "GITLAB_TOKEN"
     default_ci_config_path = ".gitlab-ci.yml"
 
@@ -111,6 +110,8 @@ def main(argv=None):
 
     # Add optional dry_run
     data |= add_dry_run(args)
+    # Convert to json
+    data = json.dumps(data).encode("utf-8")
 
     # Prepare header for curl
     url += lint_ext
@@ -124,7 +125,7 @@ def main(argv=None):
     try:
         request = urllib.request.Request(
             url=url,
-            data=json.dumps(data).encode("utf-8"),
+            data=data,
             headers=headers,
         )
         response = urllib.request.urlopen(request)
